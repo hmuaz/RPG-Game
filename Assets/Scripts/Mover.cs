@@ -7,7 +7,6 @@ public class Mover : MonoBehaviour
 {
     [SerializeField] Transform target;
     Camera cam;
-    Ray lastRay;
     void Start()
     {
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -16,12 +15,28 @@ public class Mover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<NavMeshAgent>().destination = target.position;
 
         if (Input.GetMouseButtonDown(0))
         {
-            lastRay = cam.ScreenPointToRay(Input.mousePosition);
+
+            MoveToCursor();
         }
-        Debug.DrawRay(lastRay.origin, lastRay.direction * 100, Color.red);
+
+
+    }
+
+    void MoveToCursor()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        bool hashit = Physics.Raycast(ray, out hit);
+        Debug.Log(hashit);
+        if (hashit)
+        {
+            GetComponent<NavMeshAgent>().destination = hit.point;
+            Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
+        }
+
     }
 }
