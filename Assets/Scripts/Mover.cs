@@ -7,6 +7,8 @@ public class Mover : MonoBehaviour
 {
     [SerializeField] Transform target;
     Camera cam;
+    [SerializeField] NavMeshAgent meshAgent;
+    [SerializeField] Animator animator;
     void Start()
     {
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -15,7 +17,8 @@ public class Mover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        UpdateAnimator();
+        
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -38,5 +41,13 @@ public class Mover : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
         }
 
+    }
+
+    private void UpdateAnimator()
+    {
+        Vector3 velocity = meshAgent.velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        animator.SetFloat("forwardSpeed", speed);
     }
 }
