@@ -6,41 +6,19 @@ using UnityEngine.AI;
 public class Mover : MonoBehaviour
 {
     [SerializeField] Transform target;
-    Camera cam;
     [SerializeField] NavMeshAgent meshAgent;
     [SerializeField] Animator animator;
-    void Start()
-    {
-        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
-    }
+    
 
     // Update is called once per frame
     void Update()
     {
         UpdateAnimator();
-        
-        if (Input.GetMouseButton(0))
-        {
-
-            MoveToCursor();
-        }
-
-
     }
 
-    void MoveToCursor()
+    public void MoveTo(Vector3 destination)
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        bool hashit = Physics.Raycast(ray, out hit);
-        Debug.Log(hashit);
-        if (hashit)
-        {
-            GetComponent<NavMeshAgent>().destination = hit.point;
-            Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
-        }
-
+        GetComponent<NavMeshAgent>().destination = destination;
     }
 
     private void UpdateAnimator()
