@@ -1,33 +1,66 @@
 using UnityEngine;
+using RPG.Movement;
+using RPG.Combat;
+using System;
 
-public class PlayerController : MonoBehaviour
+namespace RPG.Control
 {
-    Camera cam;
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
-        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButton(0))
+        void Start()
         {
-            MoveToCursor();
-        }
-    }
-
-    void MoveToCursor()
-    {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        bool hashit = Physics.Raycast(ray, out hit);
-        Debug.Log(hashit);
-        if (hashit)
-        {
-            GetComponent<Mover>().MoveTo(hit.point);
         }
 
+        // Update is called once per frame
+        void Update()
+        {
+            InteractWithCombat();
+            InteractWithMovement();
+        }
+
+        private void InteractWithCombat()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            foreach (RaycastHit hit in hits)
+            {
+                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
+                if (target == null) continue;
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    GetComponent<Fighter>().Attack(target);
+                }
+            }
+
+        }
+
+        
+
+        private void InteractWithMovement()
+        {
+            if (Input.GetMouseButton(0))
+            {
+                MoveToCursor();
+            }
+        }
+
+        private void MoveToCursor()
+        {
+            RaycastHit hit;
+
+            bool hashit = Physics.Raycast(GetMouseRay(), out hit);
+            Debug.Log(hashit);
+            if (hashit)
+            {
+                GetComponent<Mover>().MoveTo(hit.point);
+            }
+
+        }
+
+        private Ray GetMouseRay()
+        {
+            
+            return FindObjectOfType<Camera>().ScreenPointToRay(Input.mousePosition);
+        }
     }
 }
