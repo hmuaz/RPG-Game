@@ -12,6 +12,7 @@ namespace RPG.Movement
         [SerializeField] Animator animator;
 
 
+
         // Update is called once per frame
         void Update()
         {
@@ -20,7 +21,13 @@ namespace RPG.Movement
 
         public void MoveTo(Vector3 destination)
         {
-            GetComponent<NavMeshAgent>().destination = destination;
+            meshAgent.isStopped = false;
+            meshAgent.destination = destination;
+        }
+
+        public void Stop()
+        {
+            meshAgent.isStopped = true;
         }
 
         private void UpdateAnimator()
