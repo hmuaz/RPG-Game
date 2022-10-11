@@ -43,7 +43,6 @@ namespace RPG.Control
             RaycastHit hit;
 
             bool hashit = Physics.Raycast(GetMouseRay(), out hit);
-            Debug.Log(hashit);
             if (hashit)
             {
                 if (Input.GetMouseButton(0))
