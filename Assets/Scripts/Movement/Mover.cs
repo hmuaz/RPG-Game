@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using RPG.Core;
 
 namespace RPG.Movement
 {
-    public class Mover : MonoBehaviour
+    public class Mover : MonoBehaviour, IAction
     {
         [SerializeField] Transform target;
         [SerializeField] NavMeshAgent meshAgent;
@@ -22,6 +23,7 @@ namespace RPG.Movement
 
         public void StartMoveAction(Vector3 destination)
         {
+            GetComponent<ActionScheduler>().StartAction(this);
             GetComponent<Fighter>().Cancel();
             MoveTo(destination);
         }
@@ -32,11 +34,11 @@ namespace RPG.Movement
             meshAgent.destination = destination;
         }
 
-        public void Stop()
+        public void Cancel()
         {
             meshAgent.isStopped = true;
         }
-
+        
         private void UpdateAnimator()
         {
             Vector3 velocity = meshAgent.velocity;
@@ -44,6 +46,8 @@ namespace RPG.Movement
             float speed = localVelocity.z;
             animator.SetFloat("forwardSpeed", speed);
         }
+
+        
     }
 }
 
