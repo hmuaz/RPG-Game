@@ -1,19 +1,23 @@
 using UnityEngine;
 using RPG.Movement;
 using RPG.Combat;
-using System;
+using RPG.Core;
 
 namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
+        Health health;
         void Start()
         {
+            health = GetComponent<Health>();
         }
 
         // Update is called once per frame
         void Update()
         {
+            if (health.IsDead()) return;
+
             if(InteractWithCombat()) return;
             if(InteractWithMovement()) return;
             print("dalga");
@@ -26,11 +30,15 @@ namespace RPG.Control
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
                 Fighter fighter = GetComponent<Fighter>();
-                if (!fighter.CanAttack(target)) continue;
+
+
+                if (target == null) continue;
+
+                if (!fighter.CanAttack(target.gameObject)) continue;
                 Debug.Log("þþ");
                 if (Input.GetMouseButtonDown(0))
                 {
-                    GetComponent<Fighter>().Attack(target);
+                    GetComponent<Fighter>().Attack(target.gameObject);
                 }
                 return true;
             }

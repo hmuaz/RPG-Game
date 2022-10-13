@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4587035018702294164, guid: d7176aa6527634c40b6e7f001f12c137, type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8076165226733649333, guid: d7176aa6527634c40b6e7f001f12c137, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -69,6 +73,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8214703758647493926, guid: d7176aa6527634c40b6e7f001f12c137, type: 3}
   m_PrefabInstance: {fileID: 1454477575585057489}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &144082576
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7363150291082203127}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &144082574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,20 +112,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoint: 10
---- !u!136 &144082576
-CapsuleCollider:
+--- !u!114 &3037296109467193933
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7363150291082203127}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137541ca34da0bb438e197ece28beafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseDistance: 5
 --- !u!1001 &5737306070876851498
 PrefabInstance:
   m_ObjectHideFlags: 0

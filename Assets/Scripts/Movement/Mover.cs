@@ -13,11 +13,17 @@ namespace RPG.Movement
         [SerializeField] NavMeshAgent meshAgent;
         [SerializeField] Animator animator;
 
+        Health health;
 
-
-        // Update is called once per frame
+        private void Start()
+        {
+            health = GetComponent<Health>();
+            meshAgent = GetComponent<NavMeshAgent>();
+        }
         void Update()
         {
+            meshAgent.enabled = !health.IsDead();
+
             UpdateAnimator();
         }
 
