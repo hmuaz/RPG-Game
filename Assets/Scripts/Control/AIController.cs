@@ -13,7 +13,7 @@ namespace RPG.Control
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] float wayPointTolerance = 1f;
         [SerializeField] float waypointDwellTime = 3f;
-
+        [SerializeField] float patrolSpeedFraction = 0.2f;
 
 
         Fighter fighter;
@@ -79,7 +79,7 @@ namespace RPG.Control
 
             if(timeSinceArrivedAtWaypoint > waypointDwellTime)
             {
-                mover.StartMoveAction(nextPosition);
+                mover.StartMoveAction(nextPosition, patrolSpeedFraction);
             }
             fighter.Cancel();
 
@@ -104,11 +104,13 @@ namespace RPG.Control
 
         private void SuspicionBehaivor()
         {
+            GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 2;
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
         private void AttackBehaivor()
         {
+            GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 4;
             timeSiceLastSawPlayer = 0;
             fighter.Attack(player);
         }
