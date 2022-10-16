@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8076165226733649333, guid: d7176aa6527634c40b6e7f001f12c137, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45.9
+      value: 46.054836
       objectReference: {fileID: 0}
     - target: {fileID: 8076165226733649333, guid: d7176aa6527634c40b6e7f001f12c137, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15
+      value: 1.5015557
       objectReference: {fileID: 0}
     - target: {fileID: 8076165226733649333, guid: d7176aa6527634c40b6e7f001f12c137, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.74
+      value: 9.507965
       objectReference: {fileID: 0}
     - target: {fileID: 8076165226733649333, guid: d7176aa6527634c40b6e7f001f12c137, type: 3}
       propertyPath: m_LocalRotation.w
@@ -75,18 +75,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8214703758647493926, guid: d7176aa6527634c40b6e7f001f12c137, type: 3}
   m_PrefabInstance: {fileID: 3808200721158359163}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1373430285506467058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5105129152970214749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639615c9fcc9ffb449ef5de30e1653e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &634520102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +88,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoint: 200
+--- !u!114 &1373430285506467058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5105129152970214749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639615c9fcc9ffb449ef5de30e1653e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &1315557897
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5105129152970214749}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &8700074718862164894
 PrefabInstance:
   m_ObjectHideFlags: 0
