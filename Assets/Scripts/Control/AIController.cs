@@ -81,7 +81,7 @@ namespace RPG.Control
             {
                 mover.StartMoveAction(nextPosition, patrolSpeedFraction);
             }
-            fighter.Cancel();
+            //fighter.Cancel();
 
         }
 
