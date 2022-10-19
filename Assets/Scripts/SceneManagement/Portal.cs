@@ -35,27 +35,20 @@ namespace RPG.SceneManagement
                 Debug.LogError("Scene to Load not set.");
                 yield break;
             }
-            DontDestroyOnLoad(gameObject);
 
             Fader fader = FindObjectOfType<Fader>();
 
+            DontDestroyOnLoad(gameObject);
 
             yield return fader.FadeOut(fadeOutTime);
-
-            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
-            wrapper.Save();
-
             yield return SceneManager.LoadSceneAsync(sceneIndex);
-
-            wrapper.Load();
 
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
-            wrapper.Save();
 
             yield return new WaitForSeconds(fadeWaitTime);
 
-            yield return fader.FadeIn(fadeInTime);
+            yield return fader.FadeIn(fadeOutTime);
             Destroy(gameObject);
         }
 

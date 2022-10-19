@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
-using RPG.Saving;
 
 namespace RPG.Core
 {
-    public class Health : MonoBehaviour, ISaveable
+    public class Health : MonoBehaviour
     {
         bool isDead = false;
 
-        
         public bool IsDead()
         {
             return isDead;
@@ -18,7 +16,7 @@ namespace RPG.Core
         public void TakeDamage(float damage)
         {
             healthPoint = Mathf.Max(healthPoint - damage, 0);
-            if (healthPoint == 0)
+            if(healthPoint == 0)
             {
                 Die();
             }
@@ -27,24 +25,9 @@ namespace RPG.Core
         private void Die()
         {
             if (isDead) return;
-            isDead = true;
             GetComponent<Animator>().SetTrigger("die");
+            isDead = true;
             GetComponent<ActionScheduler>().CancelCurrentAction();
-        }
-
-        public object CaptureState()
-        {
-            return healthPoint;
-        }
-
-        public void RestoreState(object state)
-        {
-            healthPoint = (float)state;
-
-            if (healthPoint == 0)
-            {
-                Die();
-            }
         }
     }
 }
