@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
+using RPG.Saving;
 
 namespace RPG.Movement
 {
-    public class Mover : MonoBehaviour, IAction
+    public class Mover : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] Transform target;
         [SerializeField] NavMeshAgent meshAgent;
@@ -56,7 +57,40 @@ namespace RPG.Movement
             animator.SetFloat("forwardSpeed", speed);
         }
 
-        
+
+        //public object CaptureState()
+        //{
+        //    Dictionary<string, object> data = new Dictionary<string, object>();
+
+        //    data["position"] = new SerializableVector3(transform.position);
+        //    data["rotation"] = new SerializableVector3(transform.eulerAngles);
+
+
+        //    return data;
+        //}
+
+        //public void RestoreState(object state)
+        //{
+        //    Dictionary<string, object> data = (Dictionary<string, object>)state;
+        //    GetComponent<NavMeshAgent>().enabled = false;
+        //    transform.position = ((SerializableVector3)data["position"]).ToVector();
+        //    transform.position = ((SerializableVector3)data["rotation"]).ToVector();
+
+        //    GetComponent<NavMeshAgent>().enabled = true;
+        //}
+
+        public object CaptureState()
+        {
+            return new SerializableVector3(transform.position);
+        }
+
+        public void RestoreState(object state)
+        {
+            SerializableVector3 position = (SerializableVector3)state;
+            GetComponent<NavMeshAgent>().enabled = false;
+            transform.position = position.ToVector();
+            GetComponent<NavMeshAgent>().enabled = true;
+        }
     }
 }
 
