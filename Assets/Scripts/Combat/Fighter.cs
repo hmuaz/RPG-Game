@@ -13,7 +13,7 @@ namespace RPG.Combat
 
         Health target;
         [SerializeField] float timeSinceLastAttack = Mathf.Infinity;
-        Weapon currentWeapon = null;
+        [SerializeField] Weapon currentWeapon = null;
 
         private void Start()
         {
