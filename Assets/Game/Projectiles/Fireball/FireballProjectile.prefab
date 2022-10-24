@@ -50,6 +50,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   hitEffect: {fileID: 2302457091093092515, guid: 69d1b1037536b504884c93bb73d662db, type: 3}
+  maxLifeTime: 10
+  lifeAfterImpact: 0.2
+  destroyOnHit: []
 --- !u!54 &2416349787595634193
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4974,7 +4977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 479346, guid: 5cd5599e01f32bd418f20a3b9eac1c57, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5
+      value: -0.133
       objectReference: {fileID: 0}
     - target: {fileID: 479346, guid: 5cd5599e01f32bd418f20a3b9eac1c57, type: 3}
       propertyPath: m_LocalRotation.w
