@@ -3242,6 +3242,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_TreeLog_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114594, guid: e0bcb36554be1124b8a89d63037350be, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 443022, guid: e0bcb36554be1124b8a89d63037350be, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -8673,15 +8677,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3419616915579382022, guid: 9b0d1e6c38f17544681f522d8a190a5d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.804588
+      value: 49.274593
       objectReference: {fileID: 0}
     - target: {fileID: 3419616915579382022, guid: 9b0d1e6c38f17544681f522d8a190a5d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.839336
+      value: 9.839339
       objectReference: {fileID: 0}
     - target: {fileID: 3419616915579382022, guid: 9b0d1e6c38f17544681f522d8a190a5d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.405106
+      value: 9.065104
       objectReference: {fileID: 0}
     - target: {fileID: 3419616915965445370, guid: 9b0d1e6c38f17544681f522d8a190a5d, type: 3}
       propertyPath: m_Name
@@ -8733,15 +8737,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3419616917180346403, guid: 9b0d1e6c38f17544681f522d8a190a5d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.804588
+      value: 49.274593
       objectReference: {fileID: 0}
     - target: {fileID: 3419616917180346403, guid: 9b0d1e6c38f17544681f522d8a190a5d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.839336
+      value: 9.839339
       objectReference: {fileID: 0}
     - target: {fileID: 3419616917180346403, guid: 9b0d1e6c38f17544681f522d8a190a5d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.405106
+      value: 9.065104
       objectReference: {fileID: 0}
     - target: {fileID: 3979113154985657151, guid: 9b0d1e6c38f17544681f522d8a190a5d, type: 3}
       propertyPath: weaponPrefab
@@ -8797,11 +8801,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7762468998337626866, guid: 9b0d1e6c38f17544681f522d8a190a5d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.28
+      value: 40.75
       objectReference: {fileID: 0}
     - target: {fileID: 7762468998337626866, guid: 9b0d1e6c38f17544681f522d8a190a5d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.52
+      value: 9.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b0d1e6c38f17544681f522d8a190a5d, type: 3}
@@ -8812,6 +8816,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1178555687}
     m_Modifications:
+    - target: {fileID: 622474220194748649, guid: 9c6dcf7890d81684db68622466148e0b, type: 3}
+      propertyPath: characterClass
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2897668877072103075, guid: 9c6dcf7890d81684db68622466148e0b, type: 3}
       propertyPath: m_Name
       value: Tough Enemy
