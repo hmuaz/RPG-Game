@@ -56,12 +56,17 @@ namespace RPG.Combat
             return targetToTest != null && !targetToTest.IsDead();
         }
 
+        public Health GetTarget()
+        {
+            return target;
+        }
+
         private void AttackBehaivor()
         {
             transform.LookAt(target.transform);
             if (timeSinceLastAttack >= timeBetweenAttacks)
             {
-                // This will trigger the Hit() evet.
+                // This will trigger the Hit() event.
                 TriggerAttack();
                 timeSinceLastAttack = 0;
             }
@@ -80,11 +85,11 @@ namespace RPG.Combat
             if (target == null) return;
             if (currentWeapon.hasProjectTile())
             {
-                currentWeapon.LaunchProjectTile(rightHandTransform, leftHandTransform, target);
+                currentWeapon.LaunchProjectTile(rightHandTransform, leftHandTransform, target, gameObject);
             }
             else
             {
-                target.TakeDamage(currentWeapon.GetWeaponDamage());
+                target.TakeDamage(gameObject, currentWeapon.GetWeaponDamage());
             }
         }
 

@@ -14,6 +14,7 @@ namespace RPG.Combat
 
         Health target;
         float damage = 0;
+        GameObject instigator = null;
 
         void Start()
         {
@@ -27,10 +28,11 @@ namespace RPG.Combat
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
 
-        public void SetTarget(Health pTarget, float pDamage)
+        public void SetTarget(GameObject pInstigator, Health pTarget, float pDamage)
         {
             target = pTarget;
             damage = pDamage;
+            instigator = pInstigator;
 
             Destroy(gameObject, maxLifeTime);
         }
@@ -51,7 +53,7 @@ namespace RPG.Combat
             if (other.GetComponent<Health>() != target) return;
             if (target.IsDead()) return;
 
-            target.TakeDamage(damage);
+            target.TakeDamage(instigator, damage);
 
             speed = 0;
 
