@@ -8812,6 +8812,10 @@ PrefabInstance:
       propertyPath: handTransform
       value: 
       objectReference: {fileID: 282715655}
+    - target: {fileID: 5275980027352716331, guid: 9b0d1e6c38f17544681f522d8a190a5d, type: 3}
+      propertyPath: startingLevel
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5813030466067686838, guid: 9b0d1e6c38f17544681f522d8a190a5d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.037

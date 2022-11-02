@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RPG.Attributes
+namespace RPG.Stats
 {
     public class ExperienceDisplay : MonoBehaviour
     {
@@ -16,7 +16,7 @@ namespace RPG.Attributes
         // Update is called once per frame
         void Update()
         {
-            GetComponent<Text>().text = experience.GetExperiencePoints().ToString();
+            GetComponent<Text>().text = experience.GetPoints().ToString();
         }
     }
 }
