@@ -4,10 +4,11 @@ using RPG.Core;
 using RPG.Saving;
 using RPG.Attributes;
 using RPG.Stats;
+using System.Collections.Generic;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable
+    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
@@ -123,6 +124,14 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger("stopAttack");
         }
 
+        public IEnumerable<float> GetAdditiveModifers(Stat stat)
+        {
+            if(stat == Stat.Damage)
+            {
+                yield return currentWeapon.GetWeaponDamage();
+            }
+        }
+
         public object CaptureState()
         {
             return currentWeapon.name;
@@ -134,5 +143,7 @@ namespace RPG.Combat
             Weapon weapon = Resources.Load<Weapon>(weaponName);
             EquipWeapon(weapon);
         }
+
+        
     }
 }
