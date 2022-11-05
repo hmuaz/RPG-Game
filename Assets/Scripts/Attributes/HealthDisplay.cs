@@ -21,7 +21,7 @@ namespace RPG.Attributes
         {
 
 
-            GetComponent<Text>().text = "%" + health.GetPercentege().ToString("F0");
+            GetComponent<Text>().text = health.GetHealthPoints().ToString("F0") + "/" + health.GetMaxHealthPoints().ToString("F0");
         }
 
 

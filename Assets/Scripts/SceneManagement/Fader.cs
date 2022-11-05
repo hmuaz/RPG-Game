@@ -7,7 +7,10 @@ namespace RPG.SceneManagement
     {
         CanvasGroup canvasGroup;
 
-
+        private void Awake()
+        {
+            canvasGroup = FindObjectOfType<CanvasGroup>();
+        }
         public void FadeOutImmediate()
         {
             canvasGroup.alpha = 1;

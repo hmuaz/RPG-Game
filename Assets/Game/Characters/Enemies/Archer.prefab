@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 144082575, guid: b85c76408cac5ec45af01c5165a80bc1, type: 3}
+      propertyPath: healthPoint
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3037296109467193933, guid: b85c76408cac5ec45af01c5165a80bc1, type: 3}
       propertyPath: chaseDistance
       value: 10

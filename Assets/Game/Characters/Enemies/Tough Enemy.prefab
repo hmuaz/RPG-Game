@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 144082575, guid: b85c76408cac5ec45af01c5165a80bc1, type: 3}
       propertyPath: healthPoint
-      value: 100
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5737306070881988214, guid: b85c76408cac5ec45af01c5165a80bc1, type: 3}
       propertyPath: m_Materials.Array.data[0]
