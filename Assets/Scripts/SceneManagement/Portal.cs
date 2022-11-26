@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
+using RPG.Saving;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 namespace RPG.SceneManagement
 {
@@ -13,7 +14,7 @@ namespace RPG.SceneManagement
             A, B, C, D, E
         }
 
-        [SerializeField] int sceneIndex;
+        [SerializeField] int sceneToLoad = -1;
         [SerializeField] Transform spawnPoint;
         [SerializeField] DestinationIdentifier destination;
         [SerializeField] float fadeOutTime = 1f;
@@ -22,7 +23,7 @@ namespace RPG.SceneManagement
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.tag == "Player")
+            if (other.tag == "Player")
             {
                 StartCoroutine(Transition());
             }
@@ -30,41 +31,43 @@ namespace RPG.SceneManagement
 
         private IEnumerator Transition()
         {
-            if (sceneIndex < 0)
+            if (sceneToLoad < 0)
             {
-                Debug.LogError("Scene to Load not set.");
+                Debug.LogError("Scene to load not set.");
                 yield break;
             }
+
             DontDestroyOnLoad(gameObject);
 
             Fader fader = FindObjectOfType<Fader>();
-
+            SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
 
             yield return fader.FadeOut(fadeOutTime);
 
-            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
-            wrapper.Save();
+            savingWrapper.Save();
 
-            yield return SceneManager.LoadSceneAsync(sceneIndex);
+            yield return SceneManager.LoadSceneAsync(sceneToLoad);
 
-            wrapper.Load();
+            savingWrapper.Load();
 
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
-            wrapper.Save();
+
+            savingWrapper.Save();
 
             yield return new WaitForSeconds(fadeWaitTime);
-
             yield return fader.FadeIn(fadeInTime);
+
             Destroy(gameObject);
         }
 
         private void UpdatePlayer(Portal otherPortal)
         {
             GameObject player = GameObject.FindWithTag("Player");
-            player.GetComponent<NavMeshAgent>().Warp(otherPortal.spawnPoint.position);
+            player.GetComponent<NavMeshAgent>().enabled = false;
+            player.transform.position = otherPortal.spawnPoint.position;
             player.transform.rotation = otherPortal.spawnPoint.rotation;
-
+            player.GetComponent<NavMeshAgent>().enabled = true;
         }
 
         private Portal GetOtherPortal()
@@ -73,8 +76,10 @@ namespace RPG.SceneManagement
             {
                 if (portal == this) continue;
                 if (portal.destination != destination) continue;
+
                 return portal;
             }
+
             return null;
         }
     }

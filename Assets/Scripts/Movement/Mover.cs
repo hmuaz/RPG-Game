@@ -19,11 +19,15 @@ namespace RPG.Movement
         [SerializeField] float maxSpeed = 6f;
 
         Health health;
-
-        private void Start()
+        private void Awake()
         {
             health = GetComponent<Health>();
             meshAgent = GetComponent<NavMeshAgent>();
+        }
+
+        private void Start()
+        {
+            
         }
         void Update()
         {
@@ -89,9 +93,10 @@ namespace RPG.Movement
         public void RestoreState(object state)
         {
             SerializableVector3 position = (SerializableVector3)state;
-            GetComponent<NavMeshAgent>().enabled = false;
+            meshAgent.enabled = false;
             transform.position = position.ToVector();
-            GetComponent<NavMeshAgent>().enabled = true;
+            meshAgent.enabled = true;
+            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
     }
 }
