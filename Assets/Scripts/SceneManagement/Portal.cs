@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using RPG.Control;
 using RPG.Saving;
 using UnityEngine;
 using UnityEngine.AI;
@@ -42,11 +43,16 @@ namespace RPG.SceneManagement
             Fader fader = FindObjectOfType<Fader>();
             SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
 
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<PlayerController>().enabled = false;
+
             yield return fader.FadeOut(fadeOutTime);
 
             savingWrapper.Save();
 
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
+            GameObject player2 = GameObject.FindGameObjectWithTag("Player");
+            player2.GetComponent<PlayerController>().enabled = false;
 
             savingWrapper.Load();
 
@@ -56,9 +62,12 @@ namespace RPG.SceneManagement
             savingWrapper.Save();
 
             yield return new WaitForSeconds(fadeWaitTime);
-            yield return fader.FadeIn(fadeInTime);
+            fader.FadeIn(fadeInTime);
+            player2.GetComponent<PlayerController>().enabled = true;
+
 
             Destroy(gameObject);
+
         }
 
         private void UpdatePlayer(Portal otherPortal)
